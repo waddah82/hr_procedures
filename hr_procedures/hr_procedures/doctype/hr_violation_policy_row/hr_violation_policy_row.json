@@ -1,0 +1,103 @@
+{
+  "doctype": "DocType",
+  "name": "HR Violation Policy Row",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "field_order": [
+    "violation_display",
+    "occurrence_1_display",
+    "occurrence_2_display",
+    "occurrence_3_display",
+    "occurrence_4_display",
+    "links_section",
+    "violation_type",
+    "occurrence_1_penalty",
+    "occurrence_2_penalty",
+    "occurrence_3_penalty",
+    "occurrence_4_penalty"
+  ],
+  "fields": [
+    {
+      "fieldname": "violation_display",
+      "fieldtype": "Small Text",
+      "label": "Violation",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 4
+    },
+    {
+      "fieldname": "occurrence_1_display",
+      "fieldtype": "Small Text",
+      "label": "First Occurrence Penalty",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "occurrence_2_display",
+      "fieldtype": "Small Text",
+      "label": "Second Occurrence Penalty",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "occurrence_3_display",
+      "fieldtype": "Small Text",
+      "label": "Third Occurrence Penalty",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "occurrence_4_display",
+      "fieldtype": "Small Text",
+      "label": "Fourth Occurrence Penalty",
+      "read_only": 1,
+      "in_list_view": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "links_section",
+      "fieldtype": "Section Break",
+      "label": "Penalty Links"
+    },
+    {
+      "fieldname": "violation_type",
+      "fieldtype": "Link",
+      "label": "Violation Type",
+      "options": "HR Violation Type",
+      "reqd": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "occurrence_1_penalty",
+      "fieldtype": "Link",
+      "label": "First Occurrence Penalty",
+      "options": "HR Penalty Template"
+    },
+    {
+      "fieldname": "occurrence_2_penalty",
+      "fieldtype": "Link",
+      "label": "Second Occurrence Penalty",
+      "options": "HR Penalty Template"
+    },
+    {
+      "fieldname": "occurrence_3_penalty",
+      "fieldtype": "Link",
+      "label": "Third Occurrence Penalty",
+      "options": "HR Penalty Template"
+    },
+    {
+      "fieldname": "occurrence_4_penalty",
+      "fieldtype": "Link",
+      "label": "Fourth Occurrence Penalty",
+      "options": "HR Penalty Template"
+    }
+  ]
+}

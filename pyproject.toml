@@ -1,0 +1,18 @@
+[build-system]
+requires = []
+build-backend = "_offline_backend"
+backend-path = ["."]
+
+[project]
+name = "hr_procedures"
+version = "0.1.2"
+description = "Employee violations, disciplinary procedures and HRMS payroll penalties for Frappe"
+requires-python = ">=3.10"
+authors = [
+  {name = "Shams Solutions"}
+]
+dependencies = []
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+hrms = ">=15.0.0,<17.0.0"

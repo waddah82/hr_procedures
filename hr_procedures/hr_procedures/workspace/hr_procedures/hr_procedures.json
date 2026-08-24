@@ -1,0 +1,90 @@
+{
+  "doctype": "Workspace",
+  "name": "HR Procedures",
+  "label": "HR Procedures",
+  "title": "HR Procedures",
+  "module": "HR Procedures",
+  "icon": "organization",
+  "public": 1,
+  "is_hidden": 0,
+  "content": "[{\"id\": \"h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">HR Procedures</span>\", \"col\": 12}}, {\"id\": \"c1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Violation\", \"col\": 3}}, {\"id\": \"c2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Violation Policy\", \"col\": 3}}, {\"id\": \"c3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Penalty Templates\", \"col\": 3}}, {\"id\": \"c4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Violation Register\", \"col\": 3}}]",
+  "shortcuts": [
+    {
+      "label": "Employee Violation",
+      "type": "DocType",
+      "link_to": "Employee Violation",
+      "color": "Blue"
+    },
+    {
+      "label": "Violation Policy",
+      "type": "DocType",
+      "link_to": "HR Violation Policy",
+      "color": "Green"
+    },
+    {
+      "label": "Penalty Templates",
+      "type": "DocType",
+      "link_to": "HR Penalty Template",
+      "color": "Orange"
+    },
+    {
+      "label": "Violation Register",
+      "type": "Report",
+      "link_to": "Employee Violation Register",
+      "doc_view": "Report",
+      "color": "Grey"
+    }
+  ],
+  "links": [
+    {
+      "type": "Card Break",
+      "label": "Configuration"
+    },
+    {
+      "type": "Link",
+      "label": "Violation Types",
+      "link_type": "DocType",
+      "link_to": "HR Violation Type"
+    },
+    {
+      "type": "Link",
+      "label": "Penalty Templates",
+      "link_type": "DocType",
+      "link_to": "HR Penalty Template"
+    },
+    {
+      "type": "Link",
+      "label": "Violation Policies",
+      "link_type": "DocType",
+      "link_to": "HR Violation Policy"
+    },
+    {
+      "type": "Link",
+      "label": "HR Procedures Settings",
+      "link_type": "DocType",
+      "link_to": "HR Procedures Settings"
+    },
+    {
+      "type": "Card Break",
+      "label": "Operations"
+    },
+    {
+      "type": "Link",
+      "label": "Employee Violations",
+      "link_type": "DocType",
+      "link_to": "Employee Violation"
+    },
+    {
+      "type": "Link",
+      "label": "Administrative Actions",
+      "link_type": "DocType",
+      "link_to": "HR Administrative Action"
+    },
+    {
+      "type": "Link",
+      "label": "Employee Violation Register",
+      "link_type": "Report",
+      "link_to": "Employee Violation Register"
+    }
+  ]
+}

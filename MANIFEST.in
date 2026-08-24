@@ -1,0 +1,2 @@
+recursive-include hr_procedures *.json *.js *.css *.csv *.html *.md *.txt
+recursive-exclude hr_procedures *.pyc

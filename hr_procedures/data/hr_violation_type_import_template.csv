@@ -1,0 +1,4 @@
+﻿Violation Code,Violation Name,Category,Detection Source,Detection Rule,Minimum Minutes,Maximum Minutes,Requires HR Confirmation,Repeat Counting Method,Description
+LATE-001,Late arrival up to 15 minutes,Work Schedules,Employee Checkin,Late Entry,1,15,0,Contractual Year,
+EARLY-001,Early departure up to 15 minutes,Work Schedules,Employee Checkin,Early Exit,1,15,0,Contractual Year,
+ABS-001,Unauthorized absence,Work Schedules,Attendance,Absence,,,1,Contractual Year,

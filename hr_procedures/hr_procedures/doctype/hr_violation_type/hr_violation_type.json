@@ -1,0 +1,129 @@
+{
+  "doctype": "DocType",
+  "name": "HR Violation Type",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "autoname": "field:violation_code",
+  "title_field": "violation_name",
+  "search_fields": "violation_name,violation_code,description",
+  "field_order": [
+    "violation_code",
+    "violation_name",
+    "category",
+    "active",
+    "description",
+    "detection_section",
+    "detection_source",
+    "detection_rule",
+    "minimum_minutes",
+    "maximum_minutes",
+    "requires_hr_confirmation",
+    "repeat_section",
+    "repeat_counting_method"
+  ],
+  "fields": [
+    {
+      "fieldname": "violation_code",
+      "fieldtype": "Data",
+      "label": "Violation Code",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "violation_name",
+      "fieldtype": "Data",
+      "label": "Violation Name",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "category",
+      "fieldtype": "Select",
+      "label": "Category",
+      "reqd": 1,
+      "options": "Work Schedules\nWork Organization\nEmployee Conduct\nOther",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "detection_section",
+      "fieldtype": "Section Break",
+      "label": "Detection"
+    },
+    {
+      "fieldname": "detection_source",
+      "fieldtype": "Select",
+      "label": "Detection Source",
+      "reqd": 1,
+      "options": "Manual\nEmployee Checkin\nAttendance",
+      "default": "Manual"
+    },
+    {
+      "fieldname": "detection_rule",
+      "fieldtype": "Select",
+      "label": "Detection Rule",
+      "options": "Manual\nLate Entry\nEarly Exit\nAbsence",
+      "default": "Manual"
+    },
+    {
+      "fieldname": "minimum_minutes",
+      "fieldtype": "Float",
+      "label": "Minimum Minutes",
+      "depends_on": "eval:doc.detection_rule=='Late Entry' || doc.detection_rule=='Early Exit'"
+    },
+    {
+      "fieldname": "maximum_minutes",
+      "fieldtype": "Float",
+      "label": "Maximum Minutes",
+      "depends_on": "eval:doc.detection_rule=='Late Entry' || doc.detection_rule=='Early Exit'"
+    },
+    {
+      "fieldname": "requires_hr_confirmation",
+      "fieldtype": "Check",
+      "label": "Requires HR Confirmation",
+      "default": "0"
+    },
+    {
+      "fieldname": "repeat_section",
+      "fieldtype": "Section Break",
+      "label": "Occurrence Counting"
+    },
+    {
+      "fieldname": "repeat_counting_method",
+      "fieldtype": "Select",
+      "label": "Repeat Counting Method",
+      "reqd": 1,
+      "options": "Contractual Year\nCalendar Year\nRolling 12 Months\nAll Time",
+      "default": "Contractual Year"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "HR User",
+      "read": 1
+    }
+  ],
+  "show_title_field_in_link": 1
+}

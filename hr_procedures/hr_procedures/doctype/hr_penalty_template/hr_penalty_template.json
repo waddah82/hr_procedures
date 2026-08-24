@@ -1,0 +1,139 @@
+{
+  "doctype": "DocType",
+  "name": "HR Penalty Template",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "autoname": "field:penalty_code",
+  "title_field": "penalty_name",
+  "search_fields": "penalty_name,penalty_code",
+  "field_order": [
+    "penalty_code",
+    "penalty_name",
+    "active",
+    "penalty_type",
+    "salary_section",
+    "deduction_basis",
+    "deduction_value",
+    "add_actual_late_minutes",
+    "add_actual_early_exit_minutes",
+    "add_actual_absence_days",
+    "administrative_section",
+    "warning_type",
+    "administrative_action_type",
+    "description"
+  ],
+  "fields": [
+    {
+      "fieldname": "penalty_code",
+      "fieldtype": "Data",
+      "label": "Penalty Code",
+      "reqd": 1,
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "penalty_name",
+      "fieldtype": "Data",
+      "label": "Penalty Name",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "penalty_type",
+      "fieldtype": "Select",
+      "label": "Penalty Type",
+      "reqd": 1,
+      "options": "No Action\nWarning\nSalary Deduction\nAdministrative Action\nComposite",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "salary_section",
+      "fieldtype": "Section Break",
+      "label": "Salary Deduction",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "deduction_basis",
+      "fieldtype": "Select",
+      "label": "Deduction Basis",
+      "options": "Percentage of Daily Wage\nDays of Daily Wage\nFixed Amount\nMinutes of Wage\nHours of Wage",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "deduction_value",
+      "fieldtype": "Float",
+      "label": "Deduction Value",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "add_actual_late_minutes",
+      "fieldtype": "Check",
+      "label": "Add Actual Late Minutes Deduction",
+      "default": "0",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "add_actual_early_exit_minutes",
+      "fieldtype": "Check",
+      "label": "Add Actual Early Exit Minutes Deduction",
+      "default": "0",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "add_actual_absence_days",
+      "fieldtype": "Check",
+      "label": "Add Actual Absence Days Deduction",
+      "default": "0",
+      "depends_on": "eval:doc.penalty_type=='Salary Deduction' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "administrative_section",
+      "fieldtype": "Section Break",
+      "label": "Administrative Action",
+      "depends_on": "eval:doc.penalty_type=='Warning' || doc.penalty_type=='Administrative Action' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "warning_type",
+      "fieldtype": "Select",
+      "label": "Warning Type",
+      "options": "Written Warning\nFinal Written Warning",
+      "depends_on": "eval:doc.penalty_type=='Warning' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "administrative_action_type",
+      "fieldtype": "Select",
+      "label": "Administrative Action Type",
+      "options": "Delay Promotion\nDeprive Increment\nDelay Promotion or Deprive Increment\nTermination\nTermination With Benefit\nTermination Under Article 80\nTermination Without Benefit or Compensation\nTermination Without Benefit or Notice or Compensation\nSuspension\nOther",
+      "depends_on": "eval:doc.penalty_type=='Administrative Action' || doc.penalty_type=='Composite'"
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "HR User",
+      "read": 1
+    }
+  ],
+  "show_title_field_in_link": 1
+}

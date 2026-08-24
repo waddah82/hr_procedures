@@ -1,0 +1,17 @@
+{
+  "doctype": "Report",
+  "name": "Employee Violation Register",
+  "module": "HR Procedures",
+  "ref_doctype": "Employee Violation",
+  "report_type": "Script Report",
+  "is_standard": "Yes",
+  "disabled": 0,
+  "roles": [
+    {
+      "role": "HR Manager"
+    },
+    {
+      "role": "HR User"
+    }
+  ]
+}

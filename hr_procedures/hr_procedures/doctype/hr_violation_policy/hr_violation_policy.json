@@ -1,0 +1,81 @@
+{
+  "doctype": "DocType",
+  "name": "HR Violation Policy",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "autoname": "format:HR-POL-{#####}",
+  "title_field": "policy_name",
+  "field_order": [
+    "policy_name",
+    "company",
+    "is_active",
+    "effective_from",
+    "effective_to",
+    "violations_section",
+    "violations"
+  ],
+  "fields": [
+    {
+      "fieldname": "policy_name",
+      "fieldtype": "Data",
+      "label": "Policy Name",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "is_active",
+      "fieldtype": "Check",
+      "label": "Active",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "effective_from",
+      "fieldtype": "Date",
+      "label": "Effective From",
+      "reqd": 1
+    },
+    {
+      "fieldname": "effective_to",
+      "fieldtype": "Date",
+      "label": "Effective To"
+    },
+    {
+      "fieldname": "violations_section",
+      "fieldtype": "Section Break",
+      "label": "Violation Penalties"
+    },
+    {
+      "fieldname": "violations",
+      "fieldtype": "Table",
+      "label": "Violations",
+      "options": "HR Violation Policy Row",
+      "cannot_add_rows": 1,
+      "cannot_delete_rows": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "HR User",
+      "read": 1
+    }
+  ]
+}

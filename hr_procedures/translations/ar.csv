@@ -1,0 +1,222 @@
+﻿HR Procedures,إجراءات الموارد البشرية
+Automatic Detection,الاكتشاف الآلي
+Enable Automatic Detection,تفعيل الاكتشاف الآلي
+Automatic Detection Note,ملاحظة الاكتشاف الآلي
+Automatic detection creates Draft Employee Violations only. No penalty is executed until the violation is submitted.,ينشئ الاكتشاف الآلي مخالفات موظفين بحالة مسودة فقط، ولا يتم تنفيذ أي عقوبة حتى يتم اعتماد المخالفة.
+Penalty Decision Controls,ضوابط قرار العقوبة
+Allow Penalty Waiver,السماح بإلغاء تنفيذ العقوبة
+Allow Alternative Penalty,السماح بالعقوبة البديلة
+Require Reason for Waiver,إلزام سبب عند إلغاء العقوبة
+Require Reason for Alternative Penalty,إلزام سبب عند اختيار عقوبة بديلة
+Penalty Override Role,الدور المخول بتغيير العقوبة
+Payroll Integration,تكامل الرواتب
+Deduction Salary Component,مكوّن راتب الخصم
+Submit Additional Salary Automatically,اعتماد سجل الراتب الإضافي تلقائياً
+Daily Wage Source,مصدر الأجر اليومي
+Salary Structure Assignment Base,الراتب الأساسي من تعيين هيكل الرواتب
+Last Salary Slip Component,مكوّن من آخر مسير راتب
+Wage Salary Component,مكوّن الراتب المستخدم للأجر
+Daily Wage Divisor,مقسوم الأجر اليومي
+Standard Work Hours per Day,ساعات العمل القياسية في اليوم
+Penalty Code,رمز العقوبة
+Penalty Name,اسم العقوبة
+Active,فعال
+Penalty Type,نوع العقوبة
+No Action,بدون إجراء
+Warning,إنذار
+Salary Deduction,خصم من الراتب
+Administrative Action,إجراء إداري
+Deduction Basis,أساس الخصم
+Deduction Value,قيمة الخصم
+Percentage of Daily Wage,نسبة من الأجر اليومي
+Days of Daily Wage,عدد أيام من الأجر اليومي
+Fixed Amount,مبلغ ثابت
+Minutes of Wage,دقائق من الأجر
+Hours of Wage,ساعات من الأجر
+Add Actual Late Minutes Deduction,إضافة خصم دقائق التأخير الفعلية
+Add Actual Early Exit Minutes Deduction,إضافة خصم دقائق الانصراف المبكر الفعلية
+Warning Type,نوع الإنذار
+Written Warning,إنذار كتابي
+Final Written Warning,إنذار كتابي نهائي
+Administrative Action Type,نوع الإجراء الإداري
+Delay Promotion,تأجيل الترقية
+Deprive Increment,الحرمان من العلاوة
+Termination,إنهاء الخدمة
+Suspension,إيقاف عن العمل
+Other,أخرى
+Description,الوصف
+Violation Code,رمز المخالفة
+Violation Name,اسم المخالفة
+Category,التصنيف
+Work Schedules,مواعيد العمل
+Work Organization,تنظيم العمل
+Employee Conduct,سلوك العامل
+Detection,الاكتشاف
+Detection Source,مصدر الاكتشاف
+Manual,يدوي
+Employee Checkin,تسجيل دخول الموظف
+Attendance,الحضور
+Detection Rule,قاعدة الاكتشاف
+Late Entry,التأخير في الحضور
+Early Exit,الانصراف المبكر
+Absence,الغياب
+Minimum Minutes,الحد الأدنى للدقائق
+Maximum Minutes,الحد الأعلى للدقائق
+Requires HR Confirmation,يتطلب تأكيد الموارد البشرية
+Occurrence Counting,احتساب مرات التكرار
+Repeat Counting Method,طريقة احتساب التكرار
+Contractual Year,السنة العقدية
+Calendar Year,السنة الميلادية
+Rolling 12 Months,آخر 12 شهراً
+All Time,كل المدة
+Violation Type,نوع المخالفة
+First Occurrence Penalty,عقوبة المرة الأولى
+Second Occurrence Penalty,عقوبة المرة الثانية
+Third Occurrence Penalty,عقوبة المرة الثالثة
+Fourth Occurrence Penalty,عقوبة المرة الرابعة
+Policy Name,اسم السياسة
+Company,الشركة
+Effective From,سارية من
+Effective To,سارية حتى
+Violation Penalties,عقوبات المخالفات
+Violations,المخالفات
+Sync Violation Types,مزامنة أنواع المخالفات
+Synchronizing violation types...,جارٍ مزامنة أنواع المخالفات...
+Employee,الموظف
+Employee Name,اسم الموظف
+Employee Violation,مخالفة موظف
+Penalty Template,قالب العقوبة
+Action Type,نوع الإجراء
+Action Date,تاريخ الإجراء
+Status,الحالة
+Pending,قيد التنفيذ
+Executed,تم التنفيذ
+Cancelled,ملغي
+Details,التفاصيل
+Executed By,نفذ بواسطة
+Executed On,تاريخ التنفيذ
+Violation,المخالفة
+Department,الإدارة
+Violation Date,تاريخ المخالفة
+Source,المصدر
+Automatic,آلي
+Source Reference,مرجع المصدر
+Reference DocType,نوع المستند المرجعي
+Reference Name,المستند المرجعي
+Violation Metrics,بيانات قياس المخالفة
+Late Minutes,دقائق التأخير
+Early Exit Minutes,دقائق الانصراف المبكر
+Absence Days,أيام الغياب
+Deserved Penalty,العقوبة المستحقة
+Violation Policy,سياسة المخالفات
+Occurrence Number,رقم التكرار
+Penalty Tier,درجة العقوبة
+Deserved Penalty Details,تفاصيل العقوبة المستحقة
+Deserved Deduction Amount,مبلغ الخصم المستحق
+Penalty Decision,قرار العقوبة
+Execute Deserved Penalty,تنفيذ العقوبة المستحقة
+Waive Penalty,إلغاء تنفيذ العقوبة
+Apply Alternative Penalty,تطبيق عقوبة بديلة
+Alternative Penalty,العقوبة البديلة
+Decision Reason,سبب القرار
+Decision By,صاحب القرار
+Decision Date,تاريخ القرار
+Final Penalty,العقوبة النهائية
+Final Deduction Amount,مبلغ الخصم النهائي
+Execution,التنفيذ
+Execution Status,حالة التنفيذ
+Not Executed,لم ينفذ
+Waived,تم الإعفاء
+Pending Administrative Action,بانتظار تنفيذ إجراء إداري
+Additional Salary,الراتب الإضافي
+Notes and Evidence,الملاحظات والأدلة
+Remarks,ملاحظات
+Evidence,دليل/مرفق
+Recalculate Penalty,إعادة احتساب العقوبة
+Employee Violations,مخالفات الموظف
+Penalty Templates,قوالب العقوبات
+Violation Register,سجل المخالفات
+Configuration,الإعدادات
+Violation Types,أنواع المخالفات
+Violation Policies,سياسات المخالفات
+HR Procedures Settings,إعدادات إجراءات الموارد البشرية
+Operations,العمليات
+Administrative Actions,الإجراءات الإدارية
+Employee Violation Register,سجل مخالفات الموظفين
+Date,التاريخ
+From Date,من تاريخ
+To Date,إلى تاريخ
+Deduction Basis is required for salary deduction penalties.,أساس الخصم مطلوب للعقوبات التي تخصم من الراتب.
+Deduction Value cannot be negative.,لا يمكن أن تكون قيمة الخصم سالبة.
+Maximum Minutes cannot be less than Minimum Minutes.,لا يمكن أن يكون الحد الأعلى للدقائق أقل من الحد الأدنى.
+Effective To cannot be before Effective From.,لا يمكن أن يكون تاريخ الانتهاء قبل تاريخ البداية.
+An active violation policy already overlaps this date range: {0},توجد سياسة مخالفات فعالة تتداخل مع هذه الفترة: {0}
+An executed administrative action cannot be cancelled directly.,لا يمكن إلغاء إجراء إداري تم تنفيذه مباشرة.
+A violation already exists for this source document and violation type: {0},توجد مخالفة مسجلة مسبقاً لنفس المستند المرجعي ونوع المخالفة: {0}
+No active HR Violation Policy was found for company {0} on {1}.,لم يتم العثور على سياسة مخالفات فعالة للشركة {0} في التاريخ {1}.
+No penalty is configured for occurrence {0} of violation {1} in policy {2}.,لا توجد عقوبة مضبوطة للتكرار رقم {0} للمخالفة {1} في السياسة {2}.
+Alternative Penalty is required when applying an alternative penalty.,يجب تحديد العقوبة البديلة عند اختيار تطبيق عقوبة بديلة.
+Decision Reason is required when waiving a penalty.,سبب القرار مطلوب عند إلغاء تنفيذ العقوبة.
+Decision Reason is required when applying an alternative penalty.,سبب القرار مطلوب عند تطبيق عقوبة بديلة.
+No penalty is configured for this violation occurrence.,لا توجد عقوبة مضبوطة لهذا التكرار من المخالفة.
+Wage Salary Component is required in HR Procedures Settings.,يجب تحديد مكوّن الراتب المستخدم للأجر في إعدادات إجراءات الموارد البشرية.
+No submitted Salary Slip was found to calculate the daily wage.,لم يتم العثور على مسير راتب معتمد لاحتساب الأجر اليومي.
+The configured wage component was not found in the latest Salary Slip.,لم يتم العثور على مكوّن الأجر المحدد في آخر مسير راتب.
+No submitted Salary Structure Assignment was found to calculate the daily wage.,لم يتم العثور على تعيين هيكل رواتب معتمد لاحتساب الأجر اليومي.
+Penalty waiver is disabled in HR Procedures Settings.,إلغاء تنفيذ العقوبة غير مسموح به في إعدادات إجراءات الموارد البشرية.
+Alternative penalties are disabled in HR Procedures Settings.,العقوبات البديلة غير مسموح بها في إعدادات إجراءات الموارد البشرية.
+You do not have the role required to override the deserved penalty: {0},ليس لديك الدور المطلوب لتعديل العقوبة المستحقة: {0}
+Deduction Salary Component is required in HR Procedures Settings.,يجب تحديد مكوّن راتب الخصم في إعدادات إجراءات الموارد البشرية.
+The final deduction amount must be greater than zero.,يجب أن يكون مبلغ الخصم النهائي أكبر من صفر.
+The linked administrative action is already executed and must be reversed manually before cancelling the violation.,تم تنفيذ الإجراء الإداري المرتبط ويجب عكسه يدوياً قبل إلغاء المخالفة.
+Written disciplinary warning,إنذار تأديبي كتابي
+Record the violation without executing a penalty,تسجيل المخالفة دون تنفيذ عقوبة
+Deduct 5% of Daily Wage,خصم 5% من الأجر اليومي
+Deduct 5% of the calculated daily wage,خصم 5% من الأجر اليومي المحتسب
+Deduct 10% of Daily Wage,خصم 10% من الأجر اليومي
+Deduct 10% of the calculated daily wage,خصم 10% من الأجر اليومي المحتسب
+Deduct 15% of Daily Wage,خصم 15% من الأجر اليومي
+Deduct 15% of the calculated daily wage,خصم 15% من الأجر اليومي المحتسب
+Deduct 20% of Daily Wage,خصم 20% من الأجر اليومي
+Deduct 20% of the calculated daily wage,خصم 20% من الأجر اليومي المحتسب
+Deduct 25% of Daily Wage,خصم 25% من الأجر اليومي
+Deduct 25% of the calculated daily wage,خصم 25% من الأجر اليومي المحتسب
+Deduct 30% of Daily Wage,خصم 30% من الأجر اليومي
+Deduct 30% of the calculated daily wage,خصم 30% من الأجر اليومي المحتسب
+Deduct 50% of Daily Wage,خصم 50% من الأجر اليومي
+Deduct 50% of the calculated daily wage,خصم 50% من الأجر اليومي المحتسب
+Deduct 75% of Daily Wage,خصم 75% من الأجر اليومي
+Deduct 75% of the calculated daily wage,خصم 75% من الأجر اليومي المحتسب
+Deduct 1 Day,خصم 1 يوم
+Deduct 1 day(s) of the calculated daily wage,خصم أجر 1 يوم
+Deduct 2 Days,خصم 2 أيام
+Deduct 2 day(s) of the calculated daily wage,خصم أجر 2 أيام
+Deduct 3 Days,خصم 3 أيام
+Deduct 3 day(s) of the calculated daily wage,خصم أجر 3 أيام
+Deduct 4 Days,خصم 4 أيام
+Deduct 4 day(s) of the calculated daily wage,خصم أجر 4 أيام
+Deduct 5 Days,خصم 5 أيام
+Deduct 5 day(s) of the calculated daily wage,خصم أجر 5 أيام
+HR Procedures module was not discovered from modules.txt. Verify that {0}/modules.txt contains '{1}'.,لم يتم اكتشاف وحدة إجراءات الموارد البشرية من ملف modules.txt. تأكد من أن {0}/modules.txt يحتوي على '{1}'.
+HR Procedures module is mapped to app '{0}' instead of '{1}'. Resolve the duplicate module name before installing.,وحدة إجراءات الموارد البشرية مرتبطة بالتطبيق '{0}' بدلاً من '{1}'. عالج تكرار اسم الوحدة قبل التثبيت.
+Unknown,غير معروف
+HR Procedures schema synchronization did not create these DocTypes: {0}. The installation was stopped before seed data was created.,لم تنشئ مزامنة مخطط إجراءات الموارد البشرية أنواع المستندات التالية: {0}. تم إيقاف التثبيت قبل إنشاء البيانات الأولية.
+Composite,عقوبة مركبة
+Add Actual Absence Days Deduction,إضافة حسم أجر أيام الغياب الفعلية
+Add Absence Wage Through Additional Salary,إضافة حسم أجر الغياب عبر الراتب الإضافي
+Enable only if unpaid absence is not already deducted through Salary Slip payment days.,فعّل هذا الخيار فقط إذا لم يكن أجر الغياب غير المدفوع يُحسم بالفعل من أيام الدفع في مسير الراتب.
+Delay Promotion or Deprive Increment,تأجيل الترقية أو الحرمان من العلاوة
+Termination With Benefit,الفصل مع المكافأة
+Termination Under Article 80,الفصل طبقاً للمادة 80
+Termination Without Benefit or Compensation,الفصل دون مكافأة أو تعويض
+Termination Without Benefit or Notice or Compensation,الفصل دون مكافأة أو إشعار أو تعويض
+A composite penalty must contain at least one deduction or administrative action.,يجب أن تحتوي العقوبة المركبة على خصم واحد على الأقل أو إجراء إداري.
+Penalty Links,روابط العقوبات
+Reset Source PDF Penalties,استعادة عقوبات ملف PDF الأصلي
+Actions,إجراءات
+This will restore the 50 source violations to the penalties and order defined in the supplied PDF. Continue?,سيتم استعادة المخالفات الخمسين إلى العقوبات والترتيب المحددين في ملف PDF المرفق. هل تريد المتابعة؟
+Restoring source PDF penalties...,جارٍ استعادة عقوبات ملف PDF الأصلي...
+Employee Checkin automatic detection failed for {0},فشل الكشف التلقائي عن المخالفة لبصمة الموظف {0}
+Employee Checkin scan completed.,اكتمل فحص بصمات الموظفين.
+Automatic violation detection is disabled in HR Procedures Settings.,الكشف التلقائي عن المخالفات معطل في إعدادات إجراءات الموارد البشرية.
+Penalty amount pending until payroll wage data is available. {0},مبلغ العقوبة بانتظار توفر بيانات الأجر في نظام الرواتب. {0}

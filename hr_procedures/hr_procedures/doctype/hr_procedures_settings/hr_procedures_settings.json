@@ -1,0 +1,143 @@
+{
+  "doctype": "DocType",
+  "name": "HR Procedures Settings",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "issingle": 1,
+  "field_order": [
+    "automatic_detection_section",
+    "enable_automatic_detection",
+    "automatic_detection_note",
+    "penalty_decision_section",
+    "allow_penalty_waiver",
+    "allow_alternative_penalty",
+    "require_reason_for_waiver",
+    "require_reason_for_alternative_penalty",
+    "penalty_override_role",
+    "payroll_section",
+    "deduction_salary_component",
+    "submit_additional_salary_automatically",
+    "add_absence_wage_through_additional_salary",
+    "daily_wage_source",
+    "wage_salary_component",
+    "daily_wage_divisor",
+    "standard_work_hours_per_day"
+  ],
+  "fields": [
+    {
+      "fieldname": "automatic_detection_section",
+      "fieldtype": "Section Break",
+      "label": "Automatic Detection"
+    },
+    {
+      "fieldname": "enable_automatic_detection",
+      "fieldtype": "Check",
+      "label": "Enable Automatic Detection",
+      "default": "0"
+    },
+    {
+      "fieldname": "automatic_detection_note",
+      "fieldtype": "Small Text",
+      "label": "Automatic Detection Note",
+      "read_only": 1,
+      "default": "Automatic detection creates Draft Employee Violations only. No penalty is executed until the violation is submitted."
+    },
+    {
+      "fieldname": "penalty_decision_section",
+      "fieldtype": "Section Break",
+      "label": "Penalty Decision Controls"
+    },
+    {
+      "fieldname": "allow_penalty_waiver",
+      "fieldtype": "Check",
+      "label": "Allow Penalty Waiver",
+      "default": "0"
+    },
+    {
+      "fieldname": "allow_alternative_penalty",
+      "fieldtype": "Check",
+      "label": "Allow Alternative Penalty",
+      "default": "0"
+    },
+    {
+      "fieldname": "require_reason_for_waiver",
+      "fieldtype": "Check",
+      "label": "Require Reason for Waiver",
+      "default": "1"
+    },
+    {
+      "fieldname": "require_reason_for_alternative_penalty",
+      "fieldtype": "Check",
+      "label": "Require Reason for Alternative Penalty",
+      "default": "1"
+    },
+    {
+      "fieldname": "penalty_override_role",
+      "fieldtype": "Link",
+      "label": "Penalty Override Role",
+      "options": "Role"
+    },
+    {
+      "fieldname": "payroll_section",
+      "fieldtype": "Section Break",
+      "label": "Payroll Integration"
+    },
+    {
+      "fieldname": "deduction_salary_component",
+      "fieldtype": "Link",
+      "label": "Deduction Salary Component",
+      "options": "Salary Component"
+    },
+    {
+      "fieldname": "submit_additional_salary_automatically",
+      "fieldtype": "Check",
+      "label": "Submit Additional Salary Automatically",
+      "default": "1"
+    },
+    {
+      "fieldname": "add_absence_wage_through_additional_salary",
+      "fieldtype": "Check",
+      "label": "Add Absence Wage Through Additional Salary",
+      "default": "0",
+      "description": "Enable only if unpaid absence is not already deducted through Salary Slip payment days."
+    },
+    {
+      "fieldname": "daily_wage_source",
+      "fieldtype": "Select",
+      "label": "Daily Wage Source",
+      "options": "Salary Structure Assignment Base\nLast Salary Slip Component",
+      "default": "Salary Structure Assignment Base"
+    },
+    {
+      "fieldname": "wage_salary_component",
+      "fieldtype": "Link",
+      "label": "Wage Salary Component",
+      "options": "Salary Component",
+      "depends_on": "eval:doc.daily_wage_source=='Last Salary Slip Component'"
+    },
+    {
+      "fieldname": "daily_wage_divisor",
+      "fieldtype": "Float",
+      "label": "Daily Wage Divisor",
+      "default": "30"
+    },
+    {
+      "fieldname": "standard_work_hours_per_day",
+      "fieldtype": "Float",
+      "label": "Standard Work Hours per Day",
+      "default": "8"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0
+    }
+  ]
+}

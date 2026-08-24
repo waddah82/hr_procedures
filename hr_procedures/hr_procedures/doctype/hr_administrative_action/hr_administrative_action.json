@@ -1,0 +1,116 @@
+{
+  "doctype": "DocType",
+  "name": "HR Administrative Action",
+  "module": "HR Procedures",
+  "engine": "InnoDB",
+  "track_changes": 1,
+  "allow_rename": 0,
+  "index_web_pages_for_search": 0,
+  "autoname": "format:HR-ACT-{YYYY}-{#####}",
+  "title_field": "action_type",
+  "field_order": [
+    "employee",
+    "employee_name",
+    "company",
+    "employee_violation",
+    "penalty_template",
+    "action_type",
+    "action_date",
+    "status",
+    "details",
+    "executed_by",
+    "executed_on"
+  ],
+  "fields": [
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "label": "Employee",
+      "options": "Employee",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "employee_name",
+      "fieldtype": "Data",
+      "label": "Employee Name",
+      "fetch_from": "employee.employee_name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "company",
+      "fieldtype": "Link",
+      "label": "Company",
+      "options": "Company",
+      "reqd": 1
+    },
+    {
+      "fieldname": "employee_violation",
+      "fieldtype": "Link",
+      "label": "Employee Violation",
+      "options": "Employee Violation",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "penalty_template",
+      "fieldtype": "Link",
+      "label": "Penalty Template",
+      "options": "HR Penalty Template",
+      "reqd": 1
+    },
+    {
+      "fieldname": "action_type",
+      "fieldtype": "Data",
+      "label": "Action Type",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "action_date",
+      "fieldtype": "Date",
+      "label": "Action Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Pending\nExecuted\nCancelled",
+      "default": "Pending",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Small Text",
+      "label": "Details"
+    },
+    {
+      "fieldname": "executed_by",
+      "fieldtype": "Link",
+      "label": "Executed By",
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "executed_on",
+      "fieldtype": "Datetime",
+      "label": "Executed On",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "HR User",
+      "read": 1,
+      "write": 1
+    }
+  ]
+}
