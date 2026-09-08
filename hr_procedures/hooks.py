@@ -24,9 +24,11 @@ doc_events = {
 }
 
 scheduler_events = {
-    "hourly": [
-        "hr_procedures.events.employee_checkin.scan_pending_employee_checkins",
-    ]
+    "cron": {
+        "0 1 * * *": [
+            "hr_procedures.events.employee_checkin.scan_previous_day_checkins",
+        ]
+    }
 }
 
 doctype_js = {

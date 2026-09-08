@@ -44,13 +44,38 @@ def on_trash(doc, method=None):
 
 
 def scan_pending_employee_checkins():
-    """Scheduler entry point: scan recent unprocessed check-ins every hour."""
+    """Backward-compatible manual entry point for scanning recent unprocessed check-ins."""
     if not _automatic_detection_enabled():
         return
 
     return scan_employee_checkins(
         from_datetime=add_days(now_datetime(), -DEFAULT_SCAN_DAYS),
         to_datetime=now_datetime(),
+        limit=DEFAULT_SCAN_LIMIT,
+        full_scan=0,
+    )
+
+
+def scan_previous_day_checkins():
+    """Daily scheduler entry point for final OUT evaluation from the previous calendar day.
+
+    IN logs are evaluated immediately by ``after_insert``. The daily job only reads OUT
+    logs, which keeps the scheduled query small while still allowing the engine to wait
+    until the shift has ended before deciding whether the last OUT is an early exit.
+    """
+    if not _automatic_detection_enabled():
+        return
+
+    current_time = now_datetime()
+    previous_day = add_days(getdate(current_time), -1)
+    day_start = datetime.combine(previous_day, time.min)
+    day_end = datetime.combine(previous_day, time.max)
+
+    return scan_employee_checkins(
+        from_datetime=day_start,
+        to_datetime=day_end,
+        evaluation_time=current_time,
+        log_type="OUT",
         limit=DEFAULT_SCAN_LIMIT,
         full_scan=0,
     )
@@ -63,6 +88,8 @@ def scan_employee_checkins(
     employee=None,
     limit=DEFAULT_SCAN_LIMIT,
     full_scan=0,
+    evaluation_time=None,
+    log_type=None,
 ):
     """Scan Employee Checkin records and create missing automatic violations.
 
@@ -79,19 +106,22 @@ def scan_employee_checkins(
         }
 
     limit = max(cint(limit), 1)
-    current_time = get_datetime(to_datetime) if to_datetime else now_datetime()
+    query_end = get_datetime(to_datetime) if to_datetime else now_datetime()
+    evaluation_now = get_datetime(evaluation_time) if evaluation_time else query_end
 
     filters = {"skip_auto_attendance": 0}
     if employee:
         filters["employee"] = employee
+    if log_type:
+        filters["log_type"] = log_type
 
     if not cint(full_scan):
-        scan_from = get_datetime(from_datetime) if from_datetime else add_days(current_time, -DEFAULT_SCAN_DAYS)
-        filters["time"] = ["between", [scan_from, current_time]]
+        scan_from = get_datetime(from_datetime) if from_datetime else add_days(query_end, -DEFAULT_SCAN_DAYS)
+        filters["time"] = ["between", [scan_from, query_end]]
     elif from_datetime:
-        filters["time"] = ["between", [get_datetime(from_datetime), current_time]]
+        filters["time"] = ["between", [get_datetime(from_datetime), query_end]]
     elif to_datetime:
-        filters["time"] = ["<=", current_time]
+        filters["time"] = ["<=", query_end]
 
     fields = _checkin_query_fields()
     checkins = frappe.get_all(
@@ -128,7 +158,7 @@ def scan_employee_checkins(
             continue
 
         try:
-            outcome = _process_checkin(row, current_time=current_time)
+            outcome = _process_checkin(row, current_time=evaluation_now)
         except Exception as exc:
             result["errors"] += 1
             if len(result["error_samples"]) < 10:
