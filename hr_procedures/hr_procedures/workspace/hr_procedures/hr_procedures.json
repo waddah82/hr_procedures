@@ -7,7 +7,7 @@
   "icon": "organization",
   "public": 1,
   "is_hidden": 0,
-  "content": "[{\"id\": \"h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">HR Procedures</span>\", \"col\": 12}}, {\"id\": \"c1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Violation\", \"col\": 3}}, {\"id\": \"c2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Violation Policy\", \"col\": 3}}, {\"id\": \"c3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Penalty Templates\", \"col\": 3}}, {\"id\": \"c4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Violation Register\", \"col\": 3}}]",
+  "content": "[{\"id\": \"h_main\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">HR Procedures</span>\", \"col\": 12}}, {\"id\": \"h_ops\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Operations</span>\", \"col\": 12}}, {\"id\": \"op_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Violation\", \"col\": 3}}, {\"id\": \"op_2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"HR Administrative Action\", \"col\": 3}}, {\"id\": \"h_reports\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Reports</span>\", \"col\": 12}}, {\"id\": \"rep_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Violation Register\", \"col\": 3}}, {\"id\": \"h_config\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Violation Configuration</span>\", \"col\": 12}}, {\"id\": \"cfg_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"HR Violation Type\", \"col\": 3}}, {\"id\": \"cfg_2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"HR Penalty Template\", \"col\": 3}}, {\"id\": \"cfg_3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"HR Violation Policy\", \"col\": 3}}, {\"id\": \"h_settings\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Settings</span>\", \"col\": 12}}, {\"id\": \"set_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"HR Procedures Settings\", \"col\": 3}}, {\"id\": \"h_related\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Related HRMS</span>\", \"col\": 12}}, {\"id\": \"rel_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Checkin\", \"col\": 3}}, {\"id\": \"rel_2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Additional Salary\", \"col\": 3}}]",
   "shortcuts": [
     {
       "label": "Employee Violation",
@@ -16,29 +16,85 @@
       "color": "Blue"
     },
     {
-      "label": "Violation Policy",
+      "label": "HR Administrative Action",
       "type": "DocType",
-      "link_to": "HR Violation Policy",
-      "color": "Green"
+      "link_to": "HR Administrative Action",
+      "color": "Orange"
     },
     {
-      "label": "Penalty Templates",
+      "label": "Employee Violation Register",
+      "type": "Report",
+      "link_to": "Employee Violation Register",
+      "doc_view": "Report",
+      "color": "Grey"
+    },
+    {
+      "label": "HR Violation Type",
+      "type": "DocType",
+      "link_to": "HR Violation Type",
+      "color": "Blue"
+    },
+    {
+      "label": "HR Penalty Template",
       "type": "DocType",
       "link_to": "HR Penalty Template",
       "color": "Orange"
     },
     {
-      "label": "Violation Register",
-      "type": "Report",
-      "link_to": "Employee Violation Register",
-      "doc_view": "Report",
+      "label": "HR Violation Policy",
+      "type": "DocType",
+      "link_to": "HR Violation Policy",
+      "color": "Green"
+    },
+    {
+      "label": "HR Procedures Settings",
+      "type": "DocType",
+      "link_to": "HR Procedures Settings",
       "color": "Grey"
+    },
+    {
+      "label": "Employee Checkin",
+      "type": "DocType",
+      "link_to": "Employee Checkin",
+      "color": "Blue"
+    },
+    {
+      "label": "Additional Salary",
+      "type": "DocType",
+      "link_to": "Additional Salary",
+      "color": "Green"
     }
   ],
   "links": [
     {
       "type": "Card Break",
-      "label": "Configuration"
+      "label": "Operations"
+    },
+    {
+      "type": "Link",
+      "label": "Employee Violations",
+      "link_type": "DocType",
+      "link_to": "Employee Violation"
+    },
+    {
+      "type": "Link",
+      "label": "Administrative Actions",
+      "link_type": "DocType",
+      "link_to": "HR Administrative Action"
+    },
+    {
+      "type": "Card Break",
+      "label": "Reports"
+    },
+    {
+      "type": "Link",
+      "label": "Employee Violation Register",
+      "link_type": "Report",
+      "link_to": "Employee Violation Register"
+    },
+    {
+      "type": "Card Break",
+      "label": "Violation Configuration"
     },
     {
       "type": "Link",
@@ -59,6 +115,10 @@
       "link_to": "HR Violation Policy"
     },
     {
+      "type": "Card Break",
+      "label": "Settings"
+    },
+    {
       "type": "Link",
       "label": "HR Procedures Settings",
       "link_type": "DocType",
@@ -66,25 +126,19 @@
     },
     {
       "type": "Card Break",
-      "label": "Operations"
+      "label": "Related HRMS"
     },
     {
       "type": "Link",
-      "label": "Employee Violations",
+      "label": "Employee Checkin",
       "link_type": "DocType",
-      "link_to": "Employee Violation"
+      "link_to": "Employee Checkin"
     },
     {
       "type": "Link",
-      "label": "Administrative Actions",
+      "label": "Additional Salary",
       "link_type": "DocType",
-      "link_to": "HR Administrative Action"
-    },
-    {
-      "type": "Link",
-      "label": "Employee Violation Register",
-      "link_type": "Report",
-      "link_to": "Employee Violation Register"
+      "link_to": "Additional Salary"
     }
   ]
 }
