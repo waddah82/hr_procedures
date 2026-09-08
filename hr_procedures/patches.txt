@@ -2,3 +2,4 @@ hr_procedures.patches.v0_1.seed_pdf_policy
 hr_procedures.patches.v0_1.fix_pdf_order_and_titles
 hr_procedures.patches.v0_1.fix_violation_title_length
 hr_procedures.patches.v0_1.move_checkin_detection_from_attendance
+hr_procedures.patches.v0_1.set_default_violation_policy

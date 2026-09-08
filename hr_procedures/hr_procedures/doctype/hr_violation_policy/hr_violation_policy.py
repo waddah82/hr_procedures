@@ -14,9 +14,57 @@ from hr_procedures.data.source_policy import (
 class HRViolationPolicy(Document):
     def validate(self):
         self._validate_dates()
+        self._ensure_default_policy()
+        self._validate_default_policy()
         self._validate_active_overlap()
         self.sync_rows()
         self._refresh_display_values()
+
+    def before_save(self):
+        self._unset_other_default_policies()
+
+    def _ensure_default_policy(self):
+        if not (self.company and self.is_active) or self.is_default:
+            return
+
+        existing_default = frappe.get_all(
+            "HR Violation Policy",
+            filters={
+                "company": self.company,
+                "is_default": 1,
+                "name": ["!=", self.name or ""],
+            },
+            fields=["name"],
+            limit=1,
+        )
+        if not existing_default:
+            self.is_default = 1
+
+    def _validate_default_policy(self):
+        if self.is_default and not self.is_active:
+            frappe.throw(_("Default Policy must be active."))
+
+    def _unset_other_default_policies(self):
+        if not (self.is_default and self.company):
+            return
+
+        others = frappe.get_all(
+            "HR Violation Policy",
+            filters={
+                "company": self.company,
+                "is_default": 1,
+                "name": ["!=", self.name or ""],
+            },
+            fields=["name"],
+        )
+        for row in others:
+            frappe.db.set_value(
+                "HR Violation Policy",
+                row.name,
+                "is_default",
+                0,
+                update_modified=False,
+            )
 
     def _validate_dates(self):
         if self.effective_to and getdate(self.effective_to) < getdate(self.effective_from):

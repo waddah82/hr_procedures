@@ -220,3 +220,6 @@ Employee Checkin automatic detection failed for {0},فشل الكشف التلق
 Employee Checkin scan completed.,اكتمل فحص بصمات الموظفين.
 Automatic violation detection is disabled in HR Procedures Settings.,الكشف التلقائي عن المخالفات معطل في إعدادات إجراءات الموارد البشرية.
 Penalty amount pending until payroll wage data is available. {0},مبلغ العقوبة بانتظار توفر بيانات الأجر في نظام الرواتب. {0}
+Default Policy,السياسة الافتراضية
+Used as a fallback when no active policy matches the violation date.,تستخدم كسياسة احتياطية عندما لا توجد سياسة فعالة مطابقة لتاريخ المخالفة.
+Default Policy must be active.,يجب أن تكون السياسة الافتراضية فعالة.

@@ -10,10 +10,15 @@ def get_active_policy(company, violation_date):
     policies = frappe.get_all(
         "HR Violation Policy",
         filters={"company": company, "is_active": 1},
-        fields=["name", "effective_from", "effective_to"],
+        fields=["name", "effective_from", "effective_to", "is_default"],
         order_by="effective_from desc",
     )
+
+    default_policy = None
     for row in policies:
+        if getattr(row, "is_default", 0) and default_policy is None:
+            default_policy = row.name
+
         start = getdate(row.effective_from) if row.effective_from else None
         end = getdate(row.effective_to) if row.effective_to else None
         if start and violation_date < start:
@@ -21,7 +26,8 @@ def get_active_policy(company, violation_date):
         if end and violation_date > end:
             continue
         return row.name
-    return None
+
+    return default_policy
 
 
 def occurrence_window(employee, violation_type, violation_date):
