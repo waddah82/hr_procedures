@@ -44,6 +44,8 @@ class EmployeeViolation(Document):
         reverse_execution(self)
 
     def _set_violation_defaults(self):
+        if self.employee:
+            self.user_id = frappe.db.get_value("Employee", self.employee, "user_id")
         if self.violation_type:
             vtype = frappe.get_cached_doc("HR Violation Type", self.violation_type)
             self.category = vtype.category
