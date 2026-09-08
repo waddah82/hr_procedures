@@ -1,6 +1,8 @@
 import frappe
 from frappe.utils import flt
 
+from hr_procedures.utils.penalties import get_active_policy
+
 
 def on_submit(doc, method=None):
     """Attendance is retained only as the absence source.
@@ -33,6 +35,9 @@ def on_cancel(doc, method=None):
 
 
 def _create_absence_violation(attendance):
+    if not get_active_policy(attendance.company, attendance.attendance_date):
+        return {"status": "no_active_policy"}
+
     candidates = frappe.get_all(
         "HR Violation Type",
         filters={
@@ -72,3 +77,4 @@ def _create_absence_violation(attendance):
     violation.requires_hr_confirmation = match.requires_hr_confirmation
     violation.flags.ignore_permissions = True
     violation.insert()
+    return {"status": "created", "violation": violation.name}

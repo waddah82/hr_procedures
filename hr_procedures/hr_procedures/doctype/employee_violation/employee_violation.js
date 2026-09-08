@@ -59,6 +59,10 @@ function refresh_preview(frm) {
         callback(r) {
             if (!r.message) return;
             const m = r.message;
+            if (!m.violation_policy) {
+                clear_policy_preview(frm);
+                return;
+            }
             frm.set_value("violation_policy", m.violation_policy);
             frm.set_value("occurrence_no", m.occurrence_no);
             frm.set_value("penalty_tier", m.penalty_tier);
@@ -69,4 +73,15 @@ function refresh_preview(frm) {
             frm.set_value("final_deduction_amount", m.final_deduction_amount);
         },
     });
+}
+
+function clear_policy_preview(frm) {
+    frm.set_value("violation_policy", null);
+    frm.set_value("occurrence_no", null);
+    frm.set_value("penalty_tier", null);
+    frm.set_value("deserved_penalty", null);
+    frm.set_value("deserved_penalty_details", null);
+    frm.set_value("deserved_deduction_amount", 0);
+    frm.set_value("final_penalty", null);
+    frm.set_value("final_deduction_amount", 0);
 }

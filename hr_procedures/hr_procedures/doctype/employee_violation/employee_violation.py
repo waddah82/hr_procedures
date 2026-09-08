@@ -31,6 +31,10 @@ class EmployeeViolation(Document):
         # Waive Penalty and non-financial alternative penalties to be submitted
         # without requiring a Salary Structure Assignment.
         self._recalculate_deserved_penalty(strict=False)
+        if not self.violation_policy:
+            frappe.throw(
+                f"No active HR Violation Policy was found for company {self.company} on {self.violation_date}."
+            )
         self._validate_penalty_decision()
         self._set_final_penalty(strict=True)
         if self.penalty_decision in ("Waive Penalty", "Apply Alternative Penalty"):
@@ -77,7 +81,8 @@ class EmployeeViolation(Document):
 
         self.violation_policy = get_active_policy(self.company, self.violation_date)
         if not self.violation_policy:
-            frappe.throw(_("No active HR Violation Policy was found for company {0} on {1}.").format(self.company, self.violation_date))
+            self._clear_policy_values()
+            return
 
         self.occurrence_no = calculate_occurrence(
             self.employee, self.violation_type, self.violation_date, self.name
@@ -104,6 +109,16 @@ class EmployeeViolation(Document):
         )
         self.deserved_deduction_amount = amount
         self.deserved_penalty_details = details
+
+    def _clear_policy_values(self):
+        self.violation_policy = None
+        self.occurrence_no = None
+        self.penalty_tier = None
+        self.deserved_penalty = None
+        self.deserved_penalty_details = None
+        self.deserved_deduction_amount = 0
+        self.final_penalty = None
+        self.final_deduction_amount = 0
 
     def _validate_penalty_decision(self):
         settings = frappe.get_single("HR Procedures Settings")
@@ -148,7 +163,16 @@ def get_violation_preview(employee, violation_type, violation_date, company=None
         company = frappe.db.get_value("Employee", employee, "company")
     policy = get_active_policy(company, violation_date)
     if not policy:
-        frappe.throw(_("No active HR Violation Policy was found for company {0} on {1}.").format(company, violation_date))
+        return {
+            "violation_policy": None,
+            "occurrence_no": None,
+            "penalty_tier": None,
+            "deserved_penalty": None,
+            "deserved_penalty_details": None,
+            "deserved_deduction_amount": 0,
+            "final_penalty": None,
+            "final_deduction_amount": 0,
+        }
     occurrence = calculate_occurrence(employee, violation_type, violation_date)
     deserved = get_policy_penalty(policy, violation_type, occurrence)
     if not deserved:

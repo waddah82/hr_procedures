@@ -6,6 +6,8 @@ import frappe
 from frappe import _
 from frappe.utils import add_days, cint, flt, get_datetime, get_time, getdate, now_datetime, time_diff_in_hours
 
+from hr_procedures.utils.penalties import get_active_policy
+
 
 DEFAULT_SCAN_DAYS = 7
 DEFAULT_SCAN_LIMIT = 5000
@@ -115,6 +117,7 @@ def scan_employee_checkins(
         "waiting_for_shift_end": 0,
         "not_first_or_last": 0,
         "unresolved_shift": 0,
+        "no_active_policy": 0,
         "errors": 0,
         "error_samples": [],
     }
@@ -210,16 +213,23 @@ def _evaluate_late_entry(checkin, first_in, context):
         return {"status": "no_violation", "minutes": round(raw_late, 2)}
 
     minutes = round(raw_late, 2)
-    violation = _create_for_rule(
+    outcome = _create_for_rule(
         checkin=checkin,
         source_checkin=first_in,
         context=context,
         detection_rule="Late Entry",
         value=minutes,
     )
-    if not violation:
+    if outcome.get("status") == "no_active_policy":
+        return {"status": "no_active_policy", "rule": "Late Entry", "minutes": minutes}
+    if outcome.get("status") != "created":
         return {"status": "no_violation", "minutes": minutes}
-    return {"status": "created", "rule": "Late Entry", "minutes": minutes, "violation": violation}
+    return {
+        "status": "created",
+        "rule": "Late Entry",
+        "minutes": minutes,
+        "violation": outcome.get("violation"),
+    }
 
 
 def _evaluate_early_exit(checkin, last_out, context):
@@ -228,22 +238,38 @@ def _evaluate_early_exit(checkin, last_out, context):
         return {"status": "no_violation", "minutes": round(raw_early, 2)}
 
     minutes = round(raw_early, 2)
-    violation = _create_for_rule(
+    outcome = _create_for_rule(
         checkin=checkin,
         source_checkin=last_out,
         context=context,
         detection_rule="Early Exit",
         value=minutes,
     )
-    if not violation:
+    if outcome.get("status") == "no_active_policy":
+        return {"status": "no_active_policy", "rule": "Early Exit", "minutes": minutes}
+    if outcome.get("status") != "created":
         return {"status": "no_violation", "minutes": minutes}
-    return {"status": "created", "rule": "Early Exit", "minutes": minutes, "violation": violation}
+    return {
+        "status": "created",
+        "rule": "Early Exit",
+        "minutes": minutes,
+        "violation": outcome.get("violation"),
+    }
 
 
 def _create_for_rule(checkin, source_checkin, context, detection_rule, value):
+    employee_values = frappe.db.get_value("Employee", checkin.employee, ["company"], as_dict=True) or {}
+    company = employee_values.get("company")
+    if not company:
+        return {"status": "no_violation"}
+
+    violation_date = getdate(context["shift_start"])
+    if not get_active_policy(company, violation_date):
+        return {"status": "no_active_policy", "company": company}
+
     match = _find_violation_type(detection_rule, value)
     if not match:
-        return None
+        return {"status": "no_violation"}
 
     # This also protects migrations from the old Attendance-based detector. If an
     # automatic violation of the same type already exists for the employee and shift day,
@@ -252,24 +278,19 @@ def _create_for_rule(checkin, source_checkin, context, detection_rule, value):
         "Employee Violation",
         {
             "employee": checkin.employee,
-            "violation_date": getdate(context["shift_start"]),
+            "violation_date": violation_date,
             "violation_type": match.name,
             "source": "Automatic",
             "docstatus": ["<", 2],
         },
     )
     if duplicate:
-        return None
-
-    employee_values = frappe.db.get_value("Employee", checkin.employee, ["company"], as_dict=True) or {}
-    company = employee_values.get("company")
-    if not company:
-        return None
+        return {"status": "no_violation"}
 
     violation = frappe.new_doc("Employee Violation")
     violation.employee = checkin.employee
     violation.company = company
-    violation.violation_date = getdate(context["shift_start"])
+    violation.violation_date = violation_date
     violation.violation_type = match.name
     violation.source = "Automatic"
     violation.reference_doctype = "Employee Checkin"
@@ -284,8 +305,7 @@ def _create_for_rule(checkin, source_checkin, context, detection_rule, value):
     violation.flags.ignore_permissions = True
     violation.flags.hr_procedures_detection_only = True
     violation.insert()
-    return violation.name
-
+    return {"status": "created", "violation": violation.name}
 
 def _find_violation_type(detection_rule, value):
     candidates = frappe.get_all(
